@@ -1,4 +1,3 @@
-
 /*
 	Requirements: 
 		Adafruit_NeoPixel Arduino library
@@ -11,11 +10,13 @@
 
 #define RGBPIN       10
 #define LED_NUM      1
+#define RGBLED_POWER_PIN  6
 
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(LED_NUM, RGBPIN, NEO_GRB + NEO_KHZ800);
 
 void setup() {
-
+  pinMode(RGBLED_POWER_PIN, OUTPUT);
+  digitalWrite(RGBLED_POWER_PIN, HIGH);
   pixels.begin(); // This initializes the NeoPixel library.
 }
 
