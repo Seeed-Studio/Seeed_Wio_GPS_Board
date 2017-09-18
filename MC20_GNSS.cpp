@@ -295,13 +295,13 @@ bool GNSS::getCoordinate(void)
 
                  if(North_or_South[0] == 'S'){
                       latitude = 0.0 - latitude;
-                 } else if(North_or_South[0] = 'N'){
+                 } else if(North_or_South[0] == 'N'){
                      latitude = 0.0 + latitude;
                  }
 
                  if(West_or_East[0] == 'W'){
                       longitude = 0.0 - longitude;
-                 } else if(West_or_East[0] = 'E'){
+                 } else if(West_or_East[0] == 'E'){
                      longitude = 0.0 + longitude;
                  }
 
