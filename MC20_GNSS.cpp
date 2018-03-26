@@ -228,13 +228,12 @@ bool GNSS::open_GNSS_RL_mode(void)
 
 void GNSS::doubleToString(double longitude, double latitude)
 {
-  int u8_lon = (int)longitude;
-  int u8_lat = (int)latitude;
-  uint32_t u32_lon = (longitude - u8_lon)*1000000;
-  uint32_t u32_lat = (latitude - u8_lat)*1000000;
-
-  sprintf(str_longitude, "%d.%lu", u8_lon, u32_lon);
-  sprintf(str_latitude, "%d.%lu", u8_lat, u32_lat);
+  // We need full printf() support here.
+  asm(".global _printf_float");
+  snprintf(str_longitude, sizeof(str_longitude) / sizeof(str_longitude[0]) - 1,
+           "%.6f", longitude);
+  snprintf(str_latitude, sizeof(str_latitude) / sizeof(str_latitude[0]) - 1,
+           "%.6f", latitude);
 }
 
 bool GNSS::getCoordinate(void)
