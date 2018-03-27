@@ -12,7 +12,7 @@ void setup() {
   gnss.Power_On();
   SerialUSB.println("\n\rPower On!");
 
-  while(!gnss.open_GNSS(EPO_QUICK_MODE)){
+  while(!gnss.open_GNSS(GNSS_DEFAULT_MODE)){
     delay(1000);
   }
 
@@ -20,7 +20,6 @@ void setup() {
 }
 
 void loop() {
-  char buffer[64];
   if(gnss.getCoordinate()){
     SerialUSB.print("GNSS: ");
     SerialUSB.print(gnss.longitude, 6);
