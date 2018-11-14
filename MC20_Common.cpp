@@ -89,7 +89,7 @@ void GPSTracker::powerReset(void)
 void GPSTracker::io_init()
 {
   for(int i = 0; i< 20; i++){
-   pinMode(12, OUTPUT);
+   pinMode(i, OUTPUT);
    digitalWrite(i, LOW);
   }
 }
