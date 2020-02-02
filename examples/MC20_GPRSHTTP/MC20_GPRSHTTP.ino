@@ -14,36 +14,36 @@ int port = 80;
 int ret = 0;
 
 void setup() {
-  pinMode(RGBPIN, OUTPUT);
-  digitalWrite(RGBPIN, LOW);
-  SerialUSB.begin(115200);
+    pinMode(RGBPIN, OUTPUT);
+    digitalWrite(RGBPIN, LOW);
+    SerialUSB.begin(115200);
 
-  gprs.Power_On();
-  SerialUSB.println("\n\rPower On!");
+    gprs.Power_On();
+    SerialUSB.println("\n\rPower On!");
 
-  if(!(ret = gprs.init(apn))) {
-    SerialUSB.print("GPRS init error: ");
-    SerialUSB.println(ret);
-  }
+    if (!(ret = gprs.init(apn))) {
+        SerialUSB.print("GPRS init error: ");
+        SerialUSB.println(ret);
+    }
 
-  gprs.join();
-  SerialUSB.print("\n\rIP: ");
-  SerialUSB.print(gprs.ip_string);
+    gprs.join();
+    SerialUSB.print("\n\rIP: ");
+    SerialUSB.print(gprs.ip_string);
 
-  if(gprs.connectTCP(URL, port)) {
-    gprs.sendTCPData(http_cmd);  
-  } else {
-    SerialUSB.println("Connect Error!");
-  }
+    if (gprs.connectTCP(URL, port)) {
+        gprs.sendTCPData(http_cmd);
+    } else {
+        SerialUSB.println("Connect Error!");
+    }
 }
 
 void loop() {
-  /* Debug */
-  if(SerialUSB.available()){
-    serialMC20.write(SerialUSB.read());
-  }
-  if(serialMC20.available()){     
-    SerialUSB.write(serialMC20.read()); 
-  }
+    /* Debug */
+    if (SerialUSB.available()) {
+        serialMC20.write(SerialUSB.read());
+    }
+    if (serialMC20.available()) {
+        SerialUSB.write(serialMC20.read());
+    }
 
 }

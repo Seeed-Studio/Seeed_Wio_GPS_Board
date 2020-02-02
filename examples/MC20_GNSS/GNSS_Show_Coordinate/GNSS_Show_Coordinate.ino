@@ -6,31 +6,31 @@
 GNSS gnss = GNSS();
 
 void setup() {
-  SerialUSB.begin(115200);
-  // while(!SerialUSB);
+    SerialUSB.begin(115200);
+    // while(!SerialUSB);
 
-  gnss.Power_On();
-  SerialUSB.println("\n\rPower On!");
+    gnss.Power_On();
+    SerialUSB.println("\n\rPower On!");
 
-  while(!gnss.open_GNSS(GNSS_DEFAULT_MODE)){
-    delay(1000);
-  }
+    while (!gnss.open_GNSS(GNSS_DEFAULT_MODE)) {
+        delay(1000);
+    }
 
-  SerialUSB.println("Open GNSS OK.");
+    SerialUSB.println("Open GNSS OK.");
 }
 
 void loop() {
-  if(gnss.getCoordinate()){
-    SerialUSB.print("GNSS: ");
-    SerialUSB.print(gnss.longitude, 6);
-    SerialUSB.print(",");
-    SerialUSB.println(gnss.latitude, 6);
-    SerialUSB.print(gnss.str_longitude);
-    SerialUSB.print(",");
-    SerialUSB.println(gnss.str_latitude);
-  } else{
-    SerialUSB.println("Error!");
-  }
-  
-  delay(1000);
+    if (gnss.getCoordinate()) {
+        SerialUSB.print("GNSS: ");
+        SerialUSB.print(gnss.longitude, 6);
+        SerialUSB.print(",");
+        SerialUSB.println(gnss.latitude, 6);
+        SerialUSB.print(gnss.str_longitude);
+        SerialUSB.print(",");
+        SerialUSB.println(gnss.str_latitude);
+    } else {
+        SerialUSB.println("Error!");
+    }
+
+    delay(1000);
 }

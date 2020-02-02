@@ -7,12 +7,12 @@
 
 
 void setup() {
-  SerialUSB.begin(115200);
-  pinMode(ButtonPin, INPUT);
-  pinMode(GrovePowerPin, OUTPUT);
-  // write high to grove power pin to enable all the Grove ports,
-  // or only Grove D2 port is usable. 
-  digitalWrite(GrovePowerPin, HIGH);   
+    SerialUSB.begin(115200);
+    pinMode(ButtonPin, INPUT);
+    pinMode(GrovePowerPin, OUTPUT);
+    // write high to grove power pin to enable all the Grove ports,
+    // or only Grove D2 port is usable.
+    digitalWrite(GrovePowerPin, HIGH);
 }
 
 void loop() {
@@ -22,4 +22,4 @@ void loop() {
         SerialUSB.println(analogRead(LightSensorPin));
     }
     delay(500);
-}   
+}
